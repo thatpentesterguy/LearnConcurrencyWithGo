@@ -10,6 +10,7 @@ func stingy(money *int) {
 
 	for i :=0; i < 1000000; i++{
 		*money += 10
+		runtime.Gosched() // yield the processor to allow other goroutines to run
 	}
 	fmt.Println("Stingy Done")
 }
@@ -17,6 +18,7 @@ func stingy(money *int) {
 func spendy(money *int) {
 	for i :=0; i < 1000000; i++{
 		*money -= 10
+		runtime.Gosched() // yield the processor to allow other goroutines to run
 	}
 	fmt.Println("Spendy Done")
 }
@@ -24,7 +26,7 @@ func spendy(money *int) {
 func main() {
 
 	money := 100 
-	//runtime.GOMAXPROCS(1) // use one core
+	
 	
 	go stingy(&money) // address of money 
 
