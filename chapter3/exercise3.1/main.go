@@ -38,7 +38,7 @@ func main() {
 	for i := 1000; i <= 1030; i++ {
 
 		url := fmt.Sprintf("https://rfc-editor.org/rfc/rfc%d.txt", i)
-		countWords(url, frequency)
+		go countWords(url, frequency)
 	}
 	time.Sleep(10 * time.Second) // wait for goroutines to finish
 	for i, v := range frequency {
