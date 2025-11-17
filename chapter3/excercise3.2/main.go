@@ -14,15 +14,17 @@ func addNextNumber(nextNum *[101]int) {
 }
 
 func main() {
-	nextNum := [101]int{1} // Initialize the first number to 1 rest
+	nextNum := [101]int{1}
 
 	for i := 0; i < 100; i++ { // calling 100 times to fill the array
 		go addNextNumber(&nextNum)
+
 	}
 
 	for nextNum[100] == 0 {
 		println("Waiting for computation to finish...")
-		time.Sleep(1 * time.Millisecond)
+		time.Sleep(10 * time.Millisecond)
 	}
+
 	fmt.Println(nextNum)
 }
