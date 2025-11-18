@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-func addNextNumber(nextNum *[101]int) {
+func addNextNumber(nextNum *[101]int) { // *int
 	i := 0
 	for nextNum[i] != 0 { // Find the next available index
 		i++
@@ -14,7 +14,7 @@ func addNextNumber(nextNum *[101]int) {
 }
 
 func main() {
-	nextNum := [101]int{1}
+	nextNum := [101]int{1} // 100
 
 	for i := 0; i < 100; i++ { // calling 100 times to fill the array
 		go addNextNumber(&nextNum)
